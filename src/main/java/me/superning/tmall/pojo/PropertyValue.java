@@ -9,35 +9,23 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "propertyvalue")
-@JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
+@JsonIgnoreProperties({ "handler","hibernateLazyInitializer" })
 public class PropertyValue {
-
-
-
     @Id
-    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
-    private String value;
-
 
     @ManyToOne
     @JoinColumn(name = "pid")
-    private Product product;
 
+    private Product product;
     @ManyToOne
+
     @JoinColumn(name = "ptid")
     private Property property;
 
-    @Override
-    public String toString() {
-        return "PropertyValue{" +
-                "id=" + id +
-                ", value='" + value + '\'' +
-                ", product=" + product +
-                ", property=" + property +
-                '}';
-    }
+    private String value;
 
     public int getId() {
         return id;
@@ -69,5 +57,10 @@ public class PropertyValue {
 
     public void setProperty(Property property) {
         this.property = property;
+    }
+
+    @Override
+    public String toString() {
+        return "PropertyValue [id=" + id + ", product=" + product + ", property=" + property + ", value=" + value + "]";
     }
 }

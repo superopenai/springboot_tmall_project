@@ -41,6 +41,7 @@ public class PropertyValueService {
     }
 
     public List<PropertyValue> list(Product product) {
+
         return propertyValueDao.findByProductOrderByIdDesc(product);
     }
 
